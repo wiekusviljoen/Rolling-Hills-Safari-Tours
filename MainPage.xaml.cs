@@ -1,26 +1,114 @@
-using System.Diagnostics;
+using System.Net.Mail;
+using System.Text;
 
 namespace RollingHillsSafaris;
 
 public partial class MainPage : ContentPage
 {
     private const string CompanyWebsite = "https://www.rollinghillssafarisnam.com/";
+    private const string CompanyEmail = "rollinghillssafaris@gmail.com";
+    private const string CompanyPhoneDigits = "264812694550";
 
     public MainPage()
     {
         InitializeComponent();
+        TripDatePicker.MinimumDate = DateTime.Today;
+        TripDatePicker.Date = DateTime.Today.AddDays(1);
+        AdultsPicker.SelectedIndex = 1;
+        ChildrenPicker.SelectedIndex = 0;
+        BookingTypePicker.SelectedIndex = 2;
     }
 
-    private async void OnEnquireClicked(object sender, EventArgs e)
+    private async Task ScrollToSectionAsync(VisualElement section)
     {
+        await MainThread.InvokeOnMainThreadAsync(async () =>
+        {
+            await PageScrollView.ScrollToAsync(section, ScrollToPosition.Start, true);
+        });
+    }
+
+    private async void OnGoToBooking(object sender, EventArgs e)
+    {
+        await ScrollToSectionAsync(BookingSection);
+    }
+
+    private async void OnGoToTours(object sender, EventArgs e)
+    {
+        await ScrollToSectionAsync(ToursSection);
+    }
+
+    private async void OnSandwichClicked(object sender, EventArgs e)
+    {
+        TourPicker.SelectedIndex = 0;
+        await ScrollToSectionAsync(BookingSection);
+    }
+
+    private async void OnBirdingClicked(object sender, EventArgs e)
+    {
+        TourPicker.SelectedIndex = 2;
+        await ScrollToSectionAsync(BookingSection);
+    }
+
+    private async void OnCustomClicked(object sender, EventArgs e)
+    {
+        TourPicker.SelectedIndex = 4;
+        await ScrollToSectionAsync(BookingSection);
+    }
+
+    private string BuildEnquiry()
+    {
+        var adults = AdultsPicker.SelectedItem?.ToString() ?? "Not selected";
+        var children = ChildrenPicker.SelectedItem?.ToString() ?? "Not selected";
+        var tour = TourPicker.SelectedItem?.ToString() ?? "Not selected";
+        var bookingType = BookingTypePicker.SelectedItem?.ToString() ?? "Please advise me";
+        return $"Hello Rolling Hills Safaris,\n\nI'd like to enquire about a safari booking.\n\n" +
+               $"Experience: {tour}\nPreferred date: {TripDatePicker.Date:ddd, d MMM yyyy}\n" +
+               $"Adults: {adults}\nChildren: {children}\nPreference: {bookingType}\n\n" +
+               $"Name: {NameEntry.Text?.Trim()}\nEmail: {EmailEntry.Text?.Trim()}\n" +
+               $"Phone / WhatsApp: {PhoneEntry.Text?.Trim()}\n\n" +
+               $"Additional notes: {NotesEditor.Text?.Trim()}\n\n" +
+               "Please confirm availability, final pricing and the next steps. Thank you.";
+    }
+
+    private async void OnSubmitBooking(object sender, EventArgs e)
+    {
+        if (string.IsNullOrWhiteSpace(NameEntry.Text) || string.IsNullOrWhiteSpace(EmailEntry.Text))
+        {
+            await DisplayAlert("A little more information", "Please enter your name and email address so the team can reply.", "OK");
+            return;
+        }
+
+        if (!EmailEntry.Text.Contains('@') || !EmailEntry.Text.Contains('.'))
+        {
+            await DisplayAlert("Check your email", "Please enter a valid email address.", "OK");
+            return;
+        }
+
+        var subject = Uri.EscapeDataString("Safari booking enquiry - Rolling Hills Safaris");
+        var body = Uri.EscapeDataString(BuildEnquiry());
+        var mailto = new Uri($"mailto:{CompanyEmail}?subject={subject}&body={body}");
         try
         {
-            await Launcher.Default.OpenAsync(CompanyWebsite);
+            await Launcher.Default.OpenAsync(mailto);
+            await DisplayAlert("Almost there", "Your email app has opened with the enquiry prepared. Please review it and press Send. This is not yet a confirmed booking.", "OK");
         }
-        catch (Exception)
+        catch
         {
-            await DisplayAlert("Contact Rolling Hills Safaris",
-                "Please visit rollinghillssafarisnam.com to contact the team.", "OK");
+            await DisplayAlert("Contact the team", $"Please email {CompanyEmail} with your preferred tour and date.", "OK");
         }
+    }
+
+    private async void OnWhatsAppClicked(object sender, EventArgs e)
+    {
+        var message = Uri.EscapeDataString(BuildEnquiry());
+        var uri = new Uri($"https://wa.me/{CompanyPhoneDigits}?text={message}");
+        try { await Launcher.Default.OpenAsync(uri); }
+        catch { await DisplayAlert("WhatsApp", $"Please contact us on +264 81 269 4550 or {CompanyEmail}.", "OK"); }
+    }
+
+    private async void OnWebsiteClicked(object sender, EventArgs e)
+    {
+        try { await Launcher.Default.OpenAsync(new Uri(CompanyWebsite)); }
+        catch { await DisplayAlert("Website", CompanyWebsite, "OK"); }
     }
 }
