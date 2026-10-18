@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="RollingHillsSafaris.MainPage"
+             BackgroundColor="#F6F4EE"
+             Title="Rolling Hills Safaris">
+    <ScrollView>
+        <VerticalStackLayout Spacing="0">
+            <Grid BackgroundColor="#172D26" Padding="22,18" ColumnDefinitions="*,Auto">
+                <VerticalStackLayout Spacing="2">
+                    <Label Text="ROLLING HILLS" FontSize="18" FontAttributes="Bold" TextColor="#F4EBDD" CharacterSpacing="2"/>
+                    <Label Text="SAFARIS Â· NAMIBIA" FontSize="10" TextColor="#D2B887" CharacterSpacing="3"/>
+                </VerticalStackLayout>
+                <Button Grid.Column="1" Text="ENQUIRE" Clicked="OnEnquireClicked"
+                        BackgroundColor="#C6A66B" TextColor="#172D26" FontAttributes="Bold"
+                        CornerRadius="4" Padding="14,8" VerticalOptions="Center"/>
+            </Grid>
+            <Grid HeightRequest="360" BackgroundColor="#31483B">
+                <VerticalStackLayout Padding="26,38" Spacing="16" VerticalOptions="End">
+                    <Label Text="WILD. REMOTE. UNFORGETTABLE." FontSize="11" TextColor="#E3C998" CharacterSpacing="2"/>
+                    <Label Text="Discover the soul&#10;of Namibia." FontSize="38" FontAttributes="Bold" TextColor="White" LineHeight="1.05"/>
+                    <Label Text="Authentic safari experiences shaped by wide-open landscapes, remarkable wildlife and genuine Namibian hospitality." FontSize="15" TextColor="#F5F1E7" LineBreakMode="WordWrap"/>
+                    <Button Text="PLAN YOUR SAFARI  â†’" Clicked="OnEnquireClicked" BackgroundColor="#C6A66B" TextColor="#172D26" FontAttributes="Bold" CornerRadius="4" HorizontalOptions="Start" Padding="18,13"/>
+                </VerticalStackLayout>
+            </Grid>
+            <VerticalStackLayout Padding="22,30" Spacing="10">
+                <Label Text="THE EXPERIENCE" FontSize="11" TextColor="#8A7046" CharacterSpacing="2" FontAttributes="Bold"/>
+                <Label Text="Made for the moments that stay with you." FontSize="27" TextColor="#172D26" FontAttributes="Bold"/>
+                <Label Text="Explore Namibia at your own pace, with thoughtful local guidance and experiences rooted in the land." FontSize="15" TextColor="#5D625B"/>
+                <Grid ColumnDefinitions="*,*" ColumnSpacing="12" RowDefinitions="Auto,Auto" RowSpacing="12" Margin="0,12,0,0">
+                    <Border Grid.Row="0" Grid.Column="0" Stroke="#E1DCCF" BackgroundColor="#FFFFFF" Padding="15" StrokeShape="RoundRectangle 8">
+                        <VerticalStackLayout Spacing="8">
+                            <Label Text="01" FontSize="12" TextColor="#A1824E" FontAttributes="Bold"/>
+                            <Label Text="Wildlife &amp; nature" FontSize="17" TextColor="#172D26" FontAttributes="Bold"/>
+                            <Label Text="Discover Namibia's extraordinary natural world." FontSize="13" TextColor="#64685F"/>
+                        </VerticalStackLayout>
+                    </Border>
+                    <Border Grid.Row="0" Grid.Column="1" Stroke="#E1DCCF" BackgroundColor="#FFFFFF" Padding="15" StrokeShape="RoundRectangle 8">
+                        <VerticalStackLayout Spacing="8">
+                            <Label Text="02" FontSize="12" TextColor="#A1824E" FontAttributes="Bold"/>
+                            <Label Text="Private safaris" FontSize="17" TextColor="#172D26" FontAttributes="Bold"/>
+                            <Label Text="Personalised journeys built around your plans." FontSize="13" TextColor="#64685F"/>
+                        </VerticalStackLayout>
+                    </Border>
+                    <Border Grid.Row="1" Grid.Column="0" Stroke="#E1DCCF" BackgroundColor="#FFFFFF" Padding="15" StrokeShape="RoundRectangle 8">
+                        <VerticalStackLayout Spacing="8">
+                            <Label Text="03" FontSize="12" TextColor="#A1824E" FontAttributes="Bold"/>
+                            <Label Text="Local knowledge" FontSize="17" TextColor="#172D26" FontAttributes="Bold"/>
+                            <Label Text="Experience the country with people who know it." FontSize="13" TextColor="#64685F"/>
+                        </VerticalStackLayout>
+                    </Border>
+                    <Border Grid.Row="1" Grid.Column="1" Stroke="#E1DCCF" BackgroundColor="#FFFFFF" Padding="15" StrokeShape="RoundRectangle 8">
+                        <VerticalStackLayout Spacing="8">
+                            <Label Text="04" FontSize="12" TextColor="#A1824E" FontAttributes="Bold"/>
+                            <Label Text="Personal service" FontSize="17" TextColor="#172D26" FontAttributes="Bold"/>
+                            <Label Text="Clear communication from first enquiry to trip." FontSize="13" TextColor="#64685F"/>
+                        </VerticalStackLayout>
+                    </Border>
+                </Grid>
+            </VerticalStackLayout>
+            <VerticalStackLayout BackgroundColor="#EAE5D9" Padding="22,28" Spacing="12">
+                <Label Text="YOUR NAMIBIA STORY STARTS HERE" FontSize="11" TextColor="#8A7046" CharacterSpacing="2" FontAttributes="Bold"/>
+                <Label Text="Tell us what you have in mind." FontSize="26" TextColor="#172D26" FontAttributes="Bold"/>
+                <Label Text="Share your travel dates, interests and group size. Our team can help you plan the next step." FontSize="15" TextColor="#5D625B"/>
+                <Button Text="CONTACT ROLLING HILLS SAFARIS" Clicked="OnEnquireClicked" BackgroundColor="#172D26" TextColor="White" CornerRadius="4" Padding="16,14"/>
+                <Label Text="Rolling Hills Safaris Â· Namibia" FontSize="12" TextColor="#77766C" HorizontalTextAlignment="Center" Margin="0,16,0,0"/>
+            </VerticalStackLayout>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
