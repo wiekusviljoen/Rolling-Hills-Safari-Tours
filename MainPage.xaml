@@ -101,6 +101,18 @@
                     <Picker.Items><x:String>Join an existing group (subject to availability)</x:String><x:String>Private tour</x:String><x:String>Please advise me</x:String></Picker.Items>
                 </Picker>
 
+                <Label Text="Payment preference" TextColor="#172D26" FontAttributes="Bold" FontSize="13"/>
+                <Picker x:Name="PaymentPlanPicker" Title="Choose payment plan" BackgroundColor="White" TextColor="#172D26">
+                    <Picker.Items><x:String>Pay in full</x:String><x:String>Pay a deposit, then the balance</x:String></Picker.Items>
+                </Picker>
+                <Label Text="Preferred checkout currency" TextColor="#172D26" FontAttributes="Bold" FontSize="13"/>
+                <Picker x:Name="CurrencyPicker" Title="Choose currency" BackgroundColor="White" TextColor="#172D26">
+                    <Picker.Items><x:String>Namibian dollar (NAD)</x:String><x:String>South African rand (ZAR)</x:String><x:String>US dollar (USD)</x:String><x:String>Euro (EUR)</x:String><x:String>British pound (GBP)</x:String><x:String>Let me choose at checkout (if available)</x:String></Picker.Items>
+                </Picker>
+                <Border Stroke="#D8C9A8" BackgroundColor="#F8F3E8" Padding="12" StrokeShape="RoundRectangle 6">
+                    <Label Text="Payment and currency are preferences only at this stage. Live availability, exchange rates, deposit amounts and secure checkout will be enabled after the existing booking system and approved payment provider are connected." FontSize="12" TextColor="#5D625B"/>
+                </Border>
+
                 <Label Text="Your name" TextColor="#172D26" FontAttributes="Bold" FontSize="13"/>
                 <Entry x:Name="NameEntry" Placeholder="Full name" BackgroundColor="White" TextColor="#172D26" PlaceholderColor="#8A8D85"/>
                 <Label Text="Email address" TextColor="#172D26" FontAttributes="Bold" FontSize="13"/>

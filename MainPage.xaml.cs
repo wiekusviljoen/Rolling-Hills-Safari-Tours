@@ -17,6 +17,8 @@ public partial class MainPage : ContentPage
         AdultsPicker.SelectedIndex = 1;
         ChildrenPicker.SelectedIndex = 0;
         BookingTypePicker.SelectedIndex = 2;
+        PaymentPlanPicker.SelectedIndex = 0;
+        CurrencyPicker.SelectedIndex = 5;
     }
 
     private async Task ScrollToSectionAsync(VisualElement section)
@@ -61,9 +63,11 @@ public partial class MainPage : ContentPage
         var children = ChildrenPicker.SelectedItem?.ToString() ?? "Not selected";
         var tour = TourPicker.SelectedItem?.ToString() ?? "Not selected";
         var bookingType = BookingTypePicker.SelectedItem?.ToString() ?? "Please advise me";
+        var paymentPlan = PaymentPlanPicker.SelectedItem?.ToString() ?? "Not selected";
+        var currency = CurrencyPicker.SelectedItem?.ToString() ?? "Let me choose at checkout (if available)";
         return $"Hello Rolling Hills Safaris,\n\nI'd like to enquire about a safari booking.\n\n" +
                $"Experience: {tour}\nPreferred date: {TripDatePicker.Date:ddd, d MMM yyyy}\n" +
-               $"Adults: {adults}\nChildren: {children}\nPreference: {bookingType}\n\n" +
+               $"Adults: {adults}\nChildren: {children}\nPreference: {bookingType}\nPayment preference: {paymentPlan}\nPreferred checkout currency: {currency}\n\n" +
                $"Name: {NameEntry.Text?.Trim()}\nEmail: {EmailEntry.Text?.Trim()}\n" +
                $"Phone / WhatsApp: {PhoneEntry.Text?.Trim()}\n\n" +
                $"Additional notes: {NotesEditor.Text?.Trim()}\n\n" +
