@@ -1,1 +1,9 @@
-﻿<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128"><rect width="128" height="128" rx="22" fill="#172D26"/><circle cx="94" cy="28" r="10" fill="#C6A66B"/><path d="M0 92 L32 54 L51 74 L74 43 L128 100 V128 H0Z" fill="#345345"/><path d="M0 108 L39 78 L63 98 L86 72 L128 106 V128 H0Z" fill="#C6A66B"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
+  <!-- Match the installed app icon exactly on the startup splash screen -->
+  <rect width="128" height="128" rx="26" fill="#FFFFFF"/>
+  <g transform="translate(4,4)">
+    <path d="M16 24 C36 4, 76 4, 96 24 C80 16, 56 44, 30 48 C18 50, 12 45, 16 24 Z" fill="#2E8F8C" stroke="#17605C" stroke-width="2"/>
+    <path d="M8 54 C36 34, 76 34, 104 54 C80 46, 56 74, 28 78 C14 80, 10 74, 8 54 Z" fill="#1E6F6A" opacity="0.95"/>
+    <path d="M6 74 C34 56, 68 56, 96 74" fill="none" stroke="#17605C" stroke-width="3" stroke-linecap="round"/>
+  </g>
+</svg>
