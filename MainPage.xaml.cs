@@ -1,5 +1,4 @@
 using System.Net.Mail;
-using System.Text;
 
 namespace RollingHillsSafaris;
 
@@ -82,9 +81,27 @@ public partial class MainPage : ContentPage
             return;
         }
 
-        if (!EmailEntry.Text.Contains('@') || !EmailEntry.Text.Contains('.'))
+        try
+        {
+            _ = new MailAddress(EmailEntry.Text.Trim());
+        }
+        catch (FormatException)
         {
             await DisplayAlert("Check your email", "Please enter a valid email address.", "OK");
+            return;
+        }
+
+        if (TripDatePicker.Date.GetValueOrDefault().Date < DateTime.Today)
+        {
+            await DisplayAlert("Check your travel date", "Please choose today or a future date.", "OK");
+            return;
+        }
+
+        var selectedTour = TourPicker.SelectedItem?.ToString() ?? string.Empty;
+        if (selectedTour.StartsWith("Sandwich Harbour", StringComparison.OrdinalIgnoreCase) &&
+            AdultsPicker.SelectedItem?.ToString() == "1")
+        {
+            await DisplayAlert("Minimum group size", "The published Sandwich Harbour rates require at least 2 adults. Contact us if you are a solo traveller and would like to join an existing group.", "OK");
             return;
         }
 

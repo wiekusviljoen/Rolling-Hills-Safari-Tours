@@ -16,9 +16,16 @@ DPO Pay by Network publicly describes Namibia online payments settled in NAD and
 
 DPO's current documentation says sandbox credentials are issued on request rather than through a public self-service sandbox. Do not hard-code credentials or put them in the MAUI client.
 
+## Website investigation (19 October 2026)
+
+- The official site `https://www.rollinghillssafarisnam.com/` is built with **Wix Website Builder** (verified from the site's HTML generator metadata).
+- The publicly visible home page has a general contact form, and the Sandwich Harbour page publishes tour information and rates. I did not find a visible customer booking calendar, live availability display, or payment checkout on the official pages inspected.
+- This establishes the website platform, **not** whether the business uses Wix Bookings, a private Wix app, an external tour operator system, or manual email/WhatsApp confirmations. No API or booking integration can safely be assumed from the public pages.
+- Keep the current Wix website unchanged. Before enabling live availability, ask the site/account owner to check the Wix Dashboard for installed booking apps (especially Wix Bookings) and share the app/provider name and its authorized API/webhook access. If no booking engine exists, the company must approve a new source of truth for tour capacity and reservations.
+
 ## Architecture required before live checkout
 
-1. Identify the current booking engine used by the official website (provider, account owner, API/webhooks, documentation, and access). This repository contains only the MAUI client and does not reveal an existing booking-system integration. Do not assume a booking provider or scrape the website as a substitute for an API.
+1. Identify the actual booking engine in the Wix account (provider, account owner, API/webhooks, documentation, and access). This repository contains only the MAUI client and does not reveal an existing booking-system integration. Do not assume a booking provider or scrape the website as a substitute for an API.
 2. Implement a server-side booking adapter for that system. Availability and capacity must come from the source of truth, with a temporary hold/lock while checkout is underway. The server must re-check availability before final confirmation and handle expiry, cancellation, and duplicate requests idempotently.
 3. Implement a server-side DPO adapter. The client sends a booking reference and payment choice; the server validates the amount and currency from trusted booking/pricing data, creates a DPO hosted-checkout token, and returns only the checkout URL/token needed for redirection.
 4. Return customers to a neutral app/web status page. Treat a browser redirect as informational only. The backend must validate DPO callback/webhook and verify the transaction against DPO before recording payment as successful.
