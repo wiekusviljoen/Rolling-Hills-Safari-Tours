@@ -56,6 +56,25 @@ public partial class MainPage : ContentPage
         await ScrollToSectionAsync(BookingSection);
     }
 
+    private async void OnCheckoutClicked(object sender, EventArgs e)
+    {
+        if (TourPicker.SelectedIndex < 0 || string.IsNullOrWhiteSpace(NameEntry.Text) || string.IsNullOrWhiteSpace(EmailEntry.Text))
+        {
+            await DisplayAlert("Complete your booking details", "Please select a tour and enter your name and email address before continuing to checkout.", "OK");
+            return;
+        }
+        try { _ = new MailAddress(EmailEntry.Text.Trim()); }
+        catch (FormatException) { await DisplayAlert("Check your email", "Please enter a valid email address before continuing.", "OK"); return; }
+        var selectedTour = TourPicker.SelectedItem?.ToString() ?? string.Empty;
+        var adults = AdultsPicker.SelectedItem?.ToString() ?? "Not selected";
+        if (selectedTour.StartsWith("Sandwich Harbour", StringComparison.OrdinalIgnoreCase) && adults == "1")
+        {
+            await DisplayAlert("Minimum group size", "The published Sandwich Harbour rates require at least 2 adults. Contact us if you are a solo traveller and would like to join an existing group.", "OK");
+            return;
+        }
+        var checkout = new CheckoutPage(selectedTour, TripDatePicker.Date.GetValueOrDefault(), adults, ChildrenPicker.SelectedItem?.ToString() ?? "0", BookingTypePicker.SelectedItem?.ToString() ?? "Please advise me", PaymentPlanPicker.SelectedItem?.ToString() ?? "Pay in full", CurrencyPicker.SelectedItem?.ToString() ?? "Let me choose at checkout (if available)", NameEntry.Text.Trim(), EmailEntry.Text.Trim(), PhoneEntry.Text?.Trim() ?? string.Empty, NotesEditor.Text?.Trim() ?? string.Empty);
+        await Navigation.PushAsync(checkout);
+    }
     private string BuildEnquiry()
     {
         var adults = AdultsPicker.SelectedItem?.ToString() ?? "Not selected";

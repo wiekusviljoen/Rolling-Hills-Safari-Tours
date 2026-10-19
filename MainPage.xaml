@@ -9,7 +9,7 @@
             <Grid BackgroundColor="#172D26" Padding="22,18" ColumnDefinitions="*,Auto">
                 <VerticalStackLayout Spacing="3">
                     <Label Text="ROLLING HILLS" FontSize="19" FontAttributes="Bold" TextColor="#F4EBDD" CharacterSpacing="2"/>
-                    <Label Text="SAFARIS  ·  NAMIBIA" FontSize="10" TextColor="#D2B887" CharacterSpacing="3"/>
+                    <Label Text="SAFARIS  Â·  NAMIBIA" FontSize="10" TextColor="#D2B887" CharacterSpacing="3"/>
                 </VerticalStackLayout>
                 <Button Grid.Column="1" Text="BOOK A TOUR" Clicked="OnGoToBooking"
                         BackgroundColor="#C6A66B" TextColor="#172D26" FontAttributes="Bold"
@@ -19,10 +19,10 @@
             <Grid HeightRequest="365" BackgroundColor="#263F34">
                 <Image Source="dotnet_bot.png" Opacity="0.05" Aspect="AspectFill"/>
                 <VerticalStackLayout Padding="25,30" Spacing="15" VerticalOptions="End">
-                    <Label Text="WALVIS BAY  ·  NAMIBIA" FontSize="11" TextColor="#E3C998" CharacterSpacing="2" FontAttributes="Bold"/>
+                    <Label Text="WALVIS BAY  Â·  NAMIBIA" FontSize="11" TextColor="#E3C998" CharacterSpacing="2" FontAttributes="Bold"/>
                     <Label Text="Find your wild.&#10;Discover Namibia." FontSize="39" FontAttributes="Bold" TextColor="White" LineHeight="1.05"/>
                     <Label Text="From coastal birding to the dunes of Sandwich Harbour, experience Namibia with passionate local guides." FontSize="15" TextColor="#F5F1E7" LineBreakMode="WordWrap"/>
-                    <Button Text="EXPLORE OUR TOURS  ↓" Clicked="OnGoToTours" BackgroundColor="#C6A66B" TextColor="#172D26" FontAttributes="Bold" CornerRadius="5" HorizontalOptions="Start" Padding="18,13"/>
+                    <Button Text="EXPLORE OUR TOURS  â†“" Clicked="OnGoToTours" BackgroundColor="#C6A66B" TextColor="#172D26" FontAttributes="Bold" CornerRadius="5" HorizontalOptions="Start" Padding="18,13"/>
                 </VerticalStackLayout>
             </Grid>
 
@@ -36,9 +36,9 @@
                         <Label Text="01  /  COASTAL ADVENTURE" FontSize="10" TextColor="#9B7C48" CharacterSpacing="1.5" FontAttributes="Bold"/>
                         <Label Text="Sandwich Harbour" FontSize="22" TextColor="#172D26" FontAttributes="Bold"/>
                         <Label Text="Explore the spectacular meeting of desert dunes and Atlantic Ocean on a guided half-day or full-day trip." FontSize="14" TextColor="#5D625B"/>
-                        <Label Text="Half-day: N$ 2,800/adult · N$ 1,400/child under 13" FontSize="12" TextColor="#687066"/>
-                        <Label Text="Full-day: N$ 3,800/adult · N$ 1,900/child under 13" FontSize="12" TextColor="#687066"/>
-                        <Label Text="Minimum 2 adults. Children aged 0–6 travel free. Rates and availability must be reconfirmed." FontSize="11" TextColor="#8A7046"/>
+                        <Label Text="Half-day: N$ 2,800/adult Â· N$ 1,400/child under 13" FontSize="12" TextColor="#687066"/>
+                        <Label Text="Full-day: N$ 3,800/adult Â· N$ 1,900/child under 13" FontSize="12" TextColor="#687066"/>
+                        <Label Text="Minimum 2 adults. Children aged 0â€“6 travel free. Rates and availability must be reconfirmed." FontSize="11" TextColor="#8A7046"/>
                         <Button Text="ENQUIRE ABOUT THIS TOUR" Clicked="OnSandwichClicked" BackgroundColor="#172D26" TextColor="White" CornerRadius="5" Padding="14,11"/>
                     </VerticalStackLayout>
                 </Border>
@@ -121,6 +121,7 @@
                 <Entry x:Name="PhoneEntry" Placeholder="Include country code" Keyboard="Telephone" BackgroundColor="White" TextColor="#172D26" PlaceholderColor="#8A8D85"/>
                 <Label Text="Anything else we should know?" TextColor="#172D26" FontAttributes="Bold" FontSize="13"/>
                 <Editor x:Name="NotesEditor" Placeholder="Pickup location, interests, dietary needs, questions..." AutoSize="TextChanges" MinimumHeightRequest="90" BackgroundColor="White" TextColor="#172D26" PlaceholderColor="#8A8D85"/>
+                <Button Text="REVIEW BOOKING &amp; CHECKOUT" Clicked="OnCheckoutClicked" BackgroundColor="#C6A66B" TextColor="#172D26" FontAttributes="Bold" CornerRadius="5" Padding="15,14"/>
                 <Button Text="SEND BOOKING ENQUIRY BY EMAIL" Clicked="OnSubmitBooking" BackgroundColor="#172D26" TextColor="White" FontAttributes="Bold" CornerRadius="5" Padding="15,14"/>
                 <Button Text="CONTACT US ON WHATSAPP" Clicked="OnWhatsAppClicked" BackgroundColor="#C6A66B" TextColor="#172D26" FontAttributes="Bold" CornerRadius="5" Padding="15,14"/>
                 <Label Text="Availability and reservations are confirmed directly by Rolling Hills Safaris. No payment is collected in this app." FontSize="12" TextColor="#686B62"/>
@@ -132,7 +133,7 @@
                 <Label Text="+264 81 269 4550" FontSize="14" TextColor="#E1DCCF"/>
                 <Label Text="rollinghillssafaris@gmail.com" FontSize="14" TextColor="#E1DCCF"/>
                 <Button Text="OPEN OFFICIAL WEBSITE" Clicked="OnWebsiteClicked" BackgroundColor="#C6A66B" TextColor="#172D26" FontAttributes="Bold" CornerRadius="5" Padding="14,12"/>
-                <Label Text="© Rolling Hills Safaris Namibia" FontSize="11" TextColor="#B9C1B9" HorizontalTextAlignment="Center" Margin="0,10,0,0"/>
+                <Label Text="Â© Rolling Hills Safaris Namibia" FontSize="11" TextColor="#B9C1B9" HorizontalTextAlignment="Center" Margin="0,10,0,0"/>
             </VerticalStackLayout>
         </VerticalStackLayout>
     </ScrollView>

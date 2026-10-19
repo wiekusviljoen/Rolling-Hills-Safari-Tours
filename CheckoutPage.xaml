@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="RollingHillsSafaris.CheckoutPage"
+             Title="Checkout"
+             BackgroundColor="#F5F2E9">
+    <ScrollView>
+        <VerticalStackLayout Spacing="0">
+            <Grid BackgroundColor="#172D26" Padding="22,20" ColumnDefinitions="Auto,*" ColumnSpacing="14">
+                <Button Text="‹" Clicked="OnBackClicked" BackgroundColor="#263F34" TextColor="White" FontSize="26" Padding="8,0" WidthRequest="46" HeightRequest="46" VerticalOptions="Center" />
+                <VerticalStackLayout Grid.Column="1" Spacing="3" VerticalOptions="Center">
+                    <Label Text="ROLLING HILLS SAFARIS" FontSize="17" FontAttributes="Bold" TextColor="#F4EBDD" CharacterSpacing="1" />
+                    <Label Text="BOOKING CHECKOUT" FontSize="10" TextColor="#D2B887" CharacterSpacing="2" />
+                </VerticalStackLayout>
+            </Grid>
+            <VerticalStackLayout Padding="20,24" Spacing="16">
+                <Label Text="Review your safari" FontSize="29" FontAttributes="Bold" TextColor="#172D26" />
+                <Label Text="Check the details and choose how you would prefer to pay. Your booking is not confirmed until availability is checked by our team." FontSize="14" TextColor="#5D625B" />
+                <Border BackgroundColor="White" Stroke="#E1DCCF" StrokeShape="RoundRectangle 12" Padding="18">
+                    <VerticalStackLayout Spacing="12">
+                        <Label Text="YOUR BOOKING" FontSize="11" FontAttributes="Bold" TextColor="#9B7C48" CharacterSpacing="2" />
+                        <Label x:Name="TourValueLabel" Text="Selected safari" FontSize="21" FontAttributes="Bold" TextColor="#172D26" />
+                        <Grid ColumnDefinitions="Auto,*" RowDefinitions="Auto,Auto,Auto,Auto" ColumnSpacing="14" RowSpacing="9">
+                            <Label Text="Travel date" TextColor="#687066" FontSize="13" />
+                            <Label x:Name="DateValueLabel" Grid.Column="1" Text="—" TextColor="#172D26" FontSize="13" />
+                            <Label Grid.Row="1" Text="Guests" TextColor="#687066" FontSize="13" />
+                            <Label x:Name="GuestsValueLabel" Grid.Row="1" Grid.Column="1" Text="—" TextColor="#172D26" FontSize="13" />
+                            <Label Grid.Row="2" Text="Tour type" TextColor="#687066" FontSize="13" />
+                            <Label x:Name="BookingTypeValueLabel" Grid.Row="2" Grid.Column="1" Text="—" TextColor="#172D26" FontSize="13" />
+                            <Label Grid.Row="3" Text="Lead guest" TextColor="#687066" FontSize="13" />
+                            <Label x:Name="NameValueLabel" Grid.Row="3" Grid.Column="1" Text="—" TextColor="#172D26" FontSize="13" />
+                        </Grid>
+                    </VerticalStackLayout>
+                </Border>
+                <Border BackgroundColor="White" Stroke="#E1DCCF" StrokeShape="RoundRectangle 12" Padding="18">
+                    <VerticalStackLayout Spacing="12">
+                        <Label Text="PRICE SUMMARY" FontSize="11" FontAttributes="Bold" TextColor="#9B7C48" CharacterSpacing="2" />
+                        <Grid ColumnDefinitions="*,Auto" RowDefinitions="Auto,Auto,Auto" RowSpacing="10">
+                            <Label Text="Estimated tour total" TextColor="#5D625B" FontSize="14" />
+                            <Label x:Name="TotalValueLabel" Grid.Column="1" Text="Quote required" FontSize="16" FontAttributes="Bold" TextColor="#172D26" />
+                            <Label Grid.Row="1" Text="Payment today" TextColor="#5D625B" FontSize="14" />
+                            <Label x:Name="DueValueLabel" Grid.Row="1" Grid.Column="1" Text="To be confirmed" FontSize="14" FontAttributes="Bold" TextColor="#172D26" />
+                            <Label Grid.Row="2" Text="Remaining balance" TextColor="#5D625B" FontSize="14" />
+                            <Label x:Name="BalanceValueLabel" Grid.Row="2" Grid.Column="1" Text="To be confirmed" FontSize="14" FontAttributes="Bold" TextColor="#172D26" />
+                        </Grid>
+                        <Label x:Name="PriceNoteLabel" Text="Final pricing will be confirmed by Rolling Hills Safaris." FontSize="12" TextColor="#8A7046" />
+                    </VerticalStackLayout>
+                </Border>
+                <VerticalStackLayout Spacing="7">
+                    <Label Text="Payment preference" FontSize="14" FontAttributes="Bold" TextColor="#172D26" />
+                    <Picker x:Name="PaymentPlanPicker" Title="Choose a payment plan" BackgroundColor="White" TextColor="#172D26" SelectedIndexChanged="OnPaymentPlanChanged">
+                        <Picker.Items>
+                            <x:String>Pay in full</x:String>
+                            <x:String>Pay a deposit, then the balance</x:String>
+                        </Picker.Items>
+                    </Picker>
+                </VerticalStackLayout>
+                <VerticalStackLayout Spacing="7">
+                    <Label Text="Preferred currency" FontSize="14" FontAttributes="Bold" TextColor="#172D26" />
+                    <Picker x:Name="CurrencyPicker" Title="Choose a currency" BackgroundColor="White" TextColor="#172D26" SelectedIndexChanged="OnCurrencyChanged">
+                        <Picker.Items>
+                            <x:String>Namibian dollar (NAD)</x:String>
+                            <x:String>South African rand (ZAR)</x:String>
+                            <x:String>US dollar (USD)</x:String>
+                            <x:String>Euro (EUR)</x:String>
+                            <x:String>British pound (GBP)</x:String>
+                            <x:String>Let me choose at checkout (if available)</x:String>
+                        </Picker.Items>
+                    </Picker>
+                </VerticalStackLayout>
+                <Border BackgroundColor="#F8F3E8" Stroke="#D8C9A8" StrokeShape="RoundRectangle 8" Padding="14">
+                    <VerticalStackLayout Spacing="7">
+                        <Label Text="SECURE PAYMENT" FontSize="11" FontAttributes="Bold" TextColor="#8A7046" CharacterSpacing="1.5" />
+                        <Label Text="No card details are collected in this app. Once the team confirms availability, the final price and deposit terms, they will provide a secure payment link." FontSize="13" TextColor="#5D625B" />
+                        <Label Text="Online payment is not active yet while the payment provider and booking system are being connected. This screen will not charge you." FontSize="12" TextColor="#8A7046" />
+                    </VerticalStackLayout>
+                </Border>
+                <Button Text="REQUEST CONFIRMED PRICE &amp; PAYMENT LINK" Clicked="OnRequestPaymentLinkClicked" BackgroundColor="#172D26" TextColor="White" FontAttributes="Bold" CornerRadius="6" Padding="15,15" />
+                <Button Text="BACK TO EDIT BOOKING" Clicked="OnBackClicked" BackgroundColor="Transparent" BorderColor="#172D26" BorderWidth="1" TextColor="#172D26" FontAttributes="Bold" CornerRadius="6" Padding="15,13" />
+                <Label Text="Rolling Hills Safaris · Walvis Bay, Namibia" FontSize="11" TextColor="#687066" HorizontalTextAlignment="Center" />
+            </VerticalStackLayout>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
